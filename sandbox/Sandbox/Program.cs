@@ -17,5 +17,22 @@ class Program
         Console.Write("What is your favorite color? ");
         string color = Console.ReadLine();
         Console.WriteLine($"Your color is {color}.");
+
+        int x = 5;
+        int y = 2;
+        int z = 5;
+
+        if (x > y || x == z)
+        {
+            Console.WriteLine("Greater");
+        }
+        else if (x < y)
+        {
+            Console.WriteLine("Less");
+        }
+        else
+        {
+            Console.WriteLine("Equal");
+        }
     }
 }
