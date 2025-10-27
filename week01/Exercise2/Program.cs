@@ -9,29 +9,60 @@ class Program
         Console.Write("What are your grades? ");
         string userInput = Console.ReadLine();
 
-        int grades = int.Parse(userInput);
+        if (!int.TryParse(userInput, out int grades))
+        {
+            Console.WriteLine("Invalid input.");
+            return;
+        }
+
+        string letter;
 
         if (grades >= 90)
         {
-            Console.WriteLine("You have an A");
+            letter = "A";
         }
-        else if (grades < 90 && grades >= 80)
+        else if (grades >= 80)
         {
-            Console.WriteLine("You have an B");
+            letter = "B";
         }
-        else if (grades < 80 && grades >= 70)
+        else if (grades >= 70)
         {
-            Console.WriteLine("You have an C");
+            letter = "C";
         }
-        else if (grades < 70 && grades >= 60)
+        else if (grades >= 60)
         {
-            Console.WriteLine("You have an D");
+            letter = "D";
         }
         else
         {
-            Console.WriteLine("You have an F");
+            letter = "F";
         }
-        if (grades > 70)
+
+        int lastDigit = grades % 10;
+        string sign = "";
+
+        if (letter != "A" && letter != "F")
+        {
+            if (lastDigit >= 7)
+            {
+                sign = "+";
+            }
+            else if (lastDigit < 3)
+            {
+                sign = "-";
+            }
+        }
+        else if (letter == "A")
+        {
+            if (lastDigit < 3)
+            {
+                sign = "-";
+            }
+        }
+
+        Console.WriteLine($"You have {letter}{sign} letter grade.");
+
+        if (grades >= 60)
         {
             Console.WriteLine("You Passed");
         }
