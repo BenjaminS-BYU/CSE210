@@ -1,6 +1,6 @@
 using System;
 
-class Prompt
+class PromptWriter
 {
     public List<string> _prompts;
 
