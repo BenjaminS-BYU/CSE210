@@ -6,10 +6,7 @@ class Program
     static void Main(string[] args)
     {
         List<PromptWriter> prompts = ReadFromFile();
-        foreach (PromptWriter p in prompts)
-        {
-            Console.WriteLine(p);
-        }
+
         string usersChoice = "";
         while (usersChoice != "5")
         {
