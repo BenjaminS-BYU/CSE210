@@ -5,7 +5,6 @@ class Program
     
     static void Main(string[] args)
     {
-        List<PromptWriter> prompts = ReadFromFile();
 
         string usersChoice = "";
         while (usersChoice != "5")
@@ -29,12 +28,4 @@ What would you like to do? ");
         }
     }
 
-
-    public static List<PromptWriter> ReadFromFile()
-    {
-        List<PromptWriter> prompts = new List<PromptWriter>();
-        string filename = "journal_prompts.csv";
-
-        return prompts;
-    }
 }

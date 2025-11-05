@@ -1,26 +1,53 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 class Journal
 {
-    public List<Entry> _entries = new List<Entry>();
+    private List<Entry> entries;
+
+    public Journal()
+    {
+        entries = new List<Entry>();
+    }
 
     public void AddEntry(Entry newEntry)
     {
-
+        entries.Add(newEntry);
     }
 
-    public void DisplayAll()
+    public void DisplayAllEntries()
     {
-
+        foreach (Entry entry in entries)
+        {
+            entry.Display();
+        }
     }
 
     public void SaveToFile(string file)
     {
-
+        using (StreamWriter writer = new StreamWriter(file))
+        {
+            foreach (Entry entry in entries)
+            {
+                writer.WriteLine($"{entry._promptText}|{entry._entryText}|{entry._date}");
+            }
+        }
+        Console.WriteLine($"Journal saved to {file}");
     }
     
     public void LoadFromFile(string file)
     {
-        
+        entries.Clear();
+        string[] lines = File.ReadAllLines(file);
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split("|");
+            if (parts.Length == 3)
+            {
+                entries.Add(new Entry(parts[0], parts[1], parts[2]));
+            }
+        }
+        Console.WriteLine($"Journal loaded from {file}");
     }
 }
