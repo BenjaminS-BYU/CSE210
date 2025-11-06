@@ -11,8 +11,20 @@ class Journal
         entries = new List<Entry>();
     }
 
-    public void AddEntry(Entry newEntry)
+    public void AddEntry()
     {
+        PromptWriter pw = new PromptWriter();
+        string prompt = pw.GetRandomPrompt();
+        Console.WriteLine(prompt);
+
+        Console.Write("Response: ");
+        string response = Console.ReadLine();
+
+        string date = DateTime.Now.ToShortDateString();
+        Console.Write("Mood: ");
+        string mood = Console.ReadLine();
+
+        Entry newEntry = new Entry(prompt, response, date, mood);
         entries.Add(newEntry);
     }
 
@@ -43,9 +55,9 @@ class Journal
         foreach (string line in lines)
         {
             string[] parts = line.Split("|");
-            if (parts.Length == 3)
+            if (parts.Length == 4)
             {
-                Entry e = new Entry(parts[0], parts[1], parts[2]);
+                Entry e = new Entry(parts[0], parts[1], parts[2], parts[3]);
                 entries.Add(e);
             }
         }

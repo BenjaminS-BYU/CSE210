@@ -29,7 +29,7 @@ What would you like to do? ");
             switch (usersChoice)
             {
                 case 1:
-                    WriteEntry(journal);
+                    journal.AddEntry();
                     break;
 
                 case 2:
@@ -55,20 +55,5 @@ What would you like to do? ");
                     break;
             }
         }
-    }
-
-    static void WriteEntry(Journal journal)
-    {
-        PromptWriter pw = new PromptWriter();
-        string prompt = pw.GetRandomPrompt();
-        Console.WriteLine(prompt);
-
-        Console.Write("Response: ");
-        string response = Console.ReadLine();
-
-        string date = DateTime.Now.ToShortDateString();
-
-        Entry newEntry = new Entry(prompt, response, date);
-        journal.AddEntry(newEntry);
     }
 }
