@@ -22,7 +22,7 @@ What would you like to do? ");
             string choice = Console.ReadLine();
             if (!int.TryParse(choice, out usersChoice))
             {
-                Console.WriteLine("That input isn't supported, try again.");
+                Console.WriteLine("\nThat input isn't supported, try again.\n");
                 continue;
             }
 
@@ -47,11 +47,11 @@ What would you like to do? ");
                     break;
 
                 case 5:
-                    Console.WriteLine("Goodbye.");
+                    Console.WriteLine("\nGoodbye.");
                     break;
 
                 default:
-                    Console.WriteLine("Invalid choice.");
+                    Console.WriteLine("\nInvalid choice.\n");
                     break;
             }
         }

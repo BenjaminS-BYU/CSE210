@@ -33,7 +33,7 @@ class Journal
                 writer.WriteLine($"{entry._promptText}|{entry._entryText}|{entry._date}");
             }
         }
-        Console.WriteLine($"Journal saved to {file}");
+        Console.WriteLine($"\nJournal saved to {file}");
     }
     
     public void LoadFromFile(string file)
@@ -49,6 +49,6 @@ class Journal
                 entries.Add(e);
             }
         }
-        Console.WriteLine($"Journal loaded from {file}");
+        Console.WriteLine($"\nJournal loaded from {file}");
     }
 }
