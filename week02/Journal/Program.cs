@@ -2,7 +2,7 @@ using System;
 
 // Added mood, and some formatting. 
 // Also a safety for if the user types in a string instead of an int.
-// Added a save feature after the user tries to leave the program.
+// Added a save feature after the user tries to leave the program to make sure they save their work.
 class Program
 {
     static void Main(string[] args)
