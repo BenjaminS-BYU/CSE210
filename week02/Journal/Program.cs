@@ -2,6 +2,7 @@ using System;
 
 // Added mood, and some formatting. 
 // Also a safety for if the user types in a string instead of an int.
+// Added a save feature after the user tries to leave the program.
 class Program
 {
     static void Main(string[] args)
@@ -39,16 +40,26 @@ What would you like to do? ");
                     break;
 
                 case 3:
-                    string loadFile = "save.txt";
+                    Console.WriteLine("What file would you like to load from? ");
+                    string loadFile = Console.ReadLine();
                     journal.LoadFromFile(loadFile);
                     break;
 
                 case 4:
-                    string saveFile = "save.txt";
+                    Console.WriteLine("What file would you like to save to? ");
+                    string saveFile = Console.ReadLine();
                     journal.SaveToFile(saveFile);
                     break;
 
                 case 5:
+                    Console.Write("Would you like to save your file? (y/n): ");
+                    string saveQuestion = Console.ReadLine();
+                    if (saveQuestion == "y")
+                    {
+                        Console.WriteLine("What file would you like to save to? ");
+                        saveFile = Console.ReadLine();
+                        journal.SaveToFile(saveFile);
+                    }
                     Console.WriteLine("\nGoodbye.");
                     break;
 

@@ -42,10 +42,10 @@ class Journal
         {
             foreach (Entry entry in entries)
             {
-                writer.WriteLine($"{entry._promptText}|{entry._entryText}|{entry._date}");
+                writer.WriteLine($"{entry._promptText}|{entry._entryText}|{entry._date}|{entry._mood}");
             }
         }
-        Console.WriteLine($"\nJournal saved to {file}");
+        Console.WriteLine($"\nJournal saved to {file}\n");
     }
     
     public void LoadFromFile(string file)
@@ -61,6 +61,6 @@ class Journal
                 entries.Add(e);
             }
         }
-        Console.WriteLine($"\nJournal loaded from {file}");
+        Console.WriteLine($"\nJournal loaded from {file}\n");
     }
 }
