@@ -1,5 +1,7 @@
 using System;
 
+// Added mood, and some formatting. 
+// Also a safety for if the user types in a string instead of an int.
 class Program
 {
     static void Main(string[] args)
