@@ -45,7 +45,8 @@ class Journal
             string[] parts = line.Split("|");
             if (parts.Length == 3)
             {
-                entries.Add(new Entry(parts[0], parts[1], parts[2]));
+                Entry e = new Entry(parts[0], parts[1], parts[2]);
+                entries.Add(e);
             }
         }
         Console.WriteLine($"Journal loaded from {file}");

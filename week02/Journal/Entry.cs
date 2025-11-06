@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 
 class Entry
 {
@@ -13,6 +12,7 @@ class Entry
         _entryText = response;
         _date = date;
     }
+
     public void Display()
     {
         Console.WriteLine($"Date: {_date}");

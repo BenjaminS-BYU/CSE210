@@ -3,7 +3,15 @@ using System.Collections.Generic;
 
 class PromptWriter
 {
-    public List<string> _prompts = new List<string>();
+    private List<string> _prompts = new List<string>
+    {
+        "What made you smile today?",
+        "What challenge did you face?",
+        "What did you learn?",
+        "Who did you help today?",
+        "What are you grateful for?"
+    };
+
     private Random _rand = new Random();
 
     public string GetRandomPrompt()
