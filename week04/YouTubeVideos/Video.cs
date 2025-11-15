@@ -20,4 +20,17 @@ public class Video
     {
         return _comments.Count;
     }
+
+    public void DisplayVideoInfo()
+    {
+        Console.WriteLine($"Title: {_title}");
+        Console.WriteLine($"Author: {_author}");
+        Console.WriteLine($"Length: {_lengthInSeconds} seconds");
+        Console.WriteLine("Comments:");
+        foreach (var comment in _comments)
+        {
+            Console.WriteLine(comment.DisplayComment());
+        }
+        Console.WriteLine();
+    }
 }

@@ -9,9 +9,10 @@ public class Comment
         _text = text;
     }
 
-    public Comment()
+    public string DisplayComment()
     {
-        _name = "Unknown";
-        _text = "No comment provided.";
+        return $"{_name}: '{_text}'";
     }
+
+
 }
