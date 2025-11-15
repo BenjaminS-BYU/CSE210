@@ -4,6 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.Clear();
+        Console.WriteLine("Welcome to the Online Ordering System\n");
+        Console.WriteLine("-----------------------\n");
         Address address = new Address("123 Main St", "Springfield", "IL", "USA");
         Customer customer = new Customer("John Doe", address);
         Product product1 = new Product("Laptop", 999.99m, "LP1001", 1);
