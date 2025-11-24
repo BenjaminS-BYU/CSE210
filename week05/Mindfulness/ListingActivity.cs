@@ -9,9 +9,9 @@ public class ListingActivity : Activity
         "List as many achievements you are proud of."
     };
     private int _count;
-    ListingActivity()
+    public ListingActivity()
     {
-        
+        _count = 0;
     }
 
     public void Run()

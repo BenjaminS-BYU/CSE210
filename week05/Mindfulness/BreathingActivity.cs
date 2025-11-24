@@ -1,6 +1,6 @@
 public class BreathingActivity : Activity
 {
-    BreathingActivity()
+    public BreathingActivity()
     {
         
     }

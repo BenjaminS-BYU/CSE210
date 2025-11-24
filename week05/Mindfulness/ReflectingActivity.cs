@@ -15,7 +15,7 @@ public class ReflectingActivity : Activity
         "What emotions did you feel during this experience?"
     };
 
-    ReflectingActivity()
+    public ReflectingActivity()
     {
         
     }
