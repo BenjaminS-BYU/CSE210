@@ -22,26 +22,42 @@ public class ReflectingActivity : Activity
 
     public void Run()
     {
+        DisplayStartingMessage();
+        GetRandomPrompt();
+        Console.WriteLine("Take a moment to reflect on the prompt above.");
+        ShowSpinner(5);
+        foreach (string question in _questions)
+        {
+            DisplayQuestion();
+            ShowSpinner(10);
+        }
+        DisplayEndingMessage();
         
     }
 
     public void GetRandomPrompt()
     {
+        Random rand = new Random();
+        int index = rand.Next(_prompts.Count);
+        Console.WriteLine(_prompts[index]);
         
     }
 
     public void GetRandomQuestion()
     {
+        Random rand = new Random();
+        int index = rand.Next(_questions.Count);
+        Console.WriteLine(_questions[index]);
         
     }
 
     public void DisplayPrompt()
     {
-        
+        GetRandomPrompt();
     }
 
     public void DisplayQuestion()
     {
-        
+        GetRandomQuestion();
     }
 }
