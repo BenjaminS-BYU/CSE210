@@ -3,7 +3,7 @@
 // - In ListingActivity.cs, added countdown display before each user input prompt in the Run method
 // - In BreathingActivity.cs, added a beep sound after each inhale and exhale to enhance user experience. Although the different beep frequencies only work on Windows.
 // - Added a menu option in Program.cs to display activity descriptions.
-// - Added a statistics feature to track and display total time spent on each activity. I used a dictionary in a static Statistics class to record and report activity durations.
+// - Added a statistics Class to track and display total time spent on each activity. I used a dictionary in a static Statistics class to record and report activity durations.
 
 using System;
 
