@@ -10,15 +10,16 @@ public class Activity
         _description = "This activity will help you relax and focus.";
         _duration = 0;
     }
-    public void DisplayStartingMessage()
+    public int DisplayStartingMessage()
     {
-        Console.WriteLine($"Welcome to the {_name}!");
+        Console.Write($"Welcome to the {_name}! ");
         Console.WriteLine(_description);
-        Console.WriteLine("How long, in seconds, would you like to do this activity?");
+        Console.Write("How long, in seconds, would you like to do this activity? ");
         string input = Console.ReadLine();
         _duration = int.Parse(input);
         Console.WriteLine("Get ready to begin...");
         ShowSpinner(3);
+        return _duration;
     }
 
     public void DisplayEndingMessage()
@@ -48,7 +49,7 @@ public class Activity
         for (int i = seconds; i > 0; i--)
         {
             Console.Write(i);
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(900);
             Console.Write("\b \b");
         }
         

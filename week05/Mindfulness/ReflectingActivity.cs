@@ -2,17 +2,19 @@ public class ReflectingActivity : Activity
 {
     private List<string> _prompts = new List<string>()
     {
-        "Think of a time when you overcame a significant challenge.",
-        "Reflect on a moment when you felt truly at peace.",
-        "Consider a situation where you helped someone in need.",
-        "Recall an experience that made you feel proud of yourself."
+        "--- Think of a time when you overcame a significant challenge. ---",
+        "--- Reflect on a moment when you felt truly at peace. ---",
+        "--- Consider a situation where you helped someone in need. ---",
+        "--- Recall an experience that made you feel proud of yourself. ---",
+        "--- Think about a time when you learned something new about yourself. ---"
     };
     private List<string> _questions = new List<string>()
     {
         "Why was this experience meaningful to you?",
         "What did you learn about yourself from this experience?",
         "How can you apply the lessons from this experience in the future?",
-        "What emotions did you feel during this experience?"
+        "What positive emotions did you feel during this experience?",
+        "How did this experience change your perspective?"
     };
 
     public ReflectingActivity()
@@ -22,15 +24,24 @@ public class ReflectingActivity : Activity
 
     public void Run()
     {
-        DisplayStartingMessage();
+        int duration = DisplayStartingMessage();
         GetRandomPrompt();
         Console.WriteLine("Take a moment to reflect on the prompt above.");
-        ShowSpinner(5);
+        Console.WriteLine("Press Enter to continue...");
+        Console.ReadLine();
+        int elapsed = 0;
+        
         foreach (string question in _questions)
         {
             DisplayQuestion();
             ShowSpinner(10);
+            elapsed += 10;
+            if (elapsed >= duration)
+            {
+                break;
+            }
         }
+        Statistics.RecordActivity("Reflecting Activity", duration);
         DisplayEndingMessage();
         
     }
