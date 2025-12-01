@@ -4,6 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Shapes Project.");
+        Square square = new Square();
+        square.SetSide(4);
+        double sArea = square.GetArea();
+        Console.WriteLine($"The area of the square is {sArea}");
     }
 }
