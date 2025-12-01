@@ -6,4 +6,9 @@ public class Circle : Shape
     {
         return _radius*2 * Math.PI;
     }
+
+    public void SetRadius(double radius)
+    {
+        _radius = radius;
+    }
 }
