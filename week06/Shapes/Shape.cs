@@ -1,6 +1,6 @@
 public abstract class Shape
 {
-    protected string _color;
+    private string _color;
 
     public abstract double GetArea();
 
