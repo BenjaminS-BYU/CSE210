@@ -10,17 +10,16 @@ class Program
         while(running)
         {
             Console.Clear();
-            Console.Write(@$"
-            Score: {manager.GetScore()}
-            1. Create Goal
-            2. List Goals
-            3. Record Event
-            4. Save
-            5. Load
-            6. Quit
+            Console.Write(@$"Score: {manager.GetScore()}
 
-            Choose: 
-            ");
+1. Create Goal
+2. List Goals
+3. Record Event
+4. Save
+5. Load
+6. Quit
+
+Choose: ");
             string input = Console.ReadLine();
 
             switch (input)
