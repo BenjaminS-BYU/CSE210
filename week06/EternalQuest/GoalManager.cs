@@ -58,10 +58,15 @@ public class GoalManager
                         break;
 
                 case "EternalGoal":
-                break;
+                    _goals.Add(new EternalGoal(
+                        data[0], data[1], int.Parse(data[2])));
+                    break;
 
                 case "ChecklistGoal":
-                break;
+                    _goals.Add(new ChecklistGoal(
+                        data[0], data[1], int.Parse(data[2]),
+                        int.Parse(data[3]), int.Parse(data[4]), int.Parse(data[5])));
+                    break;
             }
         }
     }
