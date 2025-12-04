@@ -4,7 +4,7 @@ public class GoalManager
 {
     private List<Goal> _goals = [];
     private int _score = 0;
-    private List<string> _pointHistory = new List<string>();
+    private List<string> _pointHistory = [];
 
 
     public GoalManager()
@@ -31,7 +31,7 @@ public class GoalManager
     public void CreateGoal()
     {
         Console.Clear();
-        Console.Write(@$"What Goal is this?
+        Console.Write(@$"What Goal would you like to track?
 
 1. Simple Goal
 2. Eternal Goal
@@ -49,11 +49,10 @@ Choose: ");
 
         Console.Write("How many points is this goal worth?: ");
         int points = int.Parse(Console.ReadLine());
-
         switch (type)
         {
             case "1":
-                _goals.Add(new SimpleGoal(name, desc, points));
+                _goals.Add(new SimpleGoal(name, desc, points, false));
                 break;
 
             case "2":
@@ -114,12 +113,16 @@ Choose: ");
         if (!alreadyComplete && g.IsComplete() && g is ChecklistGoal ck)
         {
             int pts = g.GetPoints();
-            _score += pts;
-            _pointHistory.Add($"{DateTime.Now} - Earned {pts} points from \"{g.GetName()}\"");
+            int bonus = ck.GetBonus();
+            _score += pts + bonus;
+            ck.BonusAction();
+            
+            _pointHistory.Add($"{DateTime.Now} - Earned {pts} + bonus {bonus} points from \"{g.GetName()}\"");
 
         }
 
-        Console.WriteLine("Event Recorded.");
+        Console.WriteLine("\nEvent Recorded.");
+        Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
     }
 
@@ -128,7 +131,7 @@ Choose: ");
         Console.Write("Filename: ");
         string file = Console.ReadLine();
 
-        using StreamWriter sw = new StreamWriter(file);
+        using StreamWriter sw = new(file);
         sw.WriteLine(_score);
 
         foreach (Goal g in _goals)
@@ -139,7 +142,8 @@ Choose: ");
             sw.WriteLine(h);
 
 
-        Console.WriteLine("Press enter to save.");
+        Console.WriteLine("Saved.");
+        Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
     }
 
@@ -148,7 +152,22 @@ Choose: ");
         Console.Write("Filename: ");
         string file = Console.ReadLine();
 
+        if (string.IsNullOrWhiteSpace(file))
+        {
+            Console.WriteLine("Invalid entry. Try again.");
+            Console.ReadKey();
+            return;
+        }
+
+        if (!File.Exists(file))
+        {
+            Console.WriteLine("File not found.");
+            Console.ReadKey();
+            return;
+        }
+
         string[] lines = File.ReadAllLines(file);
+
 
         _score = int.Parse(lines[0]);
         _goals.Clear();
@@ -166,7 +185,7 @@ Choose: ");
             switch (p[0])
             {
                 case "SimpleGoal":
-                    _goals.Add(new SimpleGoal(p[1], p[2], int.Parse(p[3])));
+                    _goals.Add(new SimpleGoal(p[1], p[2], int.Parse(p[3]), bool.Parse(p[4])));
                     break;
 
                 case "EternalGoal":
@@ -189,6 +208,7 @@ Choose: ");
             }
 
             Console.WriteLine("Loaded.");
+            Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
     }
 

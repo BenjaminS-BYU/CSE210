@@ -1,3 +1,9 @@
+// Things I've added:
+// Being tired 
+// I added a history event where it'll record which goal gets you points, kinda made things easier for troubleshooting
+// Added a bonus reward fun thing
+
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -54,6 +60,12 @@ Which do you choose?: ");
                     break;
 
                 case "7":
+                    Console.Write("Would you like to save? (y/n): ");
+                    string ans = Console.ReadLine();
+                    if (ans.Equals("y", StringComparison.CurrentCultureIgnoreCase))
+                    manager.SaveGoals();
+
+                    Console.WriteLine("Thank you for using the Goal tracker game. Goodbye.");
                     running = false;
                     break;
 

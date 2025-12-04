@@ -1,0 +1,7 @@
+1200
+ChecklistGoal|3|do this 3 times|50|3|1000|3
+#HISTORY#
+2025-12-04 8:14:13 AM - Earned 50 points from "3"
+2025-12-04 8:14:16 AM - Earned 50 points from "3"
+2025-12-04 8:14:19 AM - Earned 50 points from "3"
+2025-12-04 8:14:23 AM - Earned 50 + bonus 1000 points from "3"

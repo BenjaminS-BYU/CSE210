@@ -37,7 +37,19 @@ public class ChecklistGoal : Goal
 
 
     public void LoadAmount(int amount)
-{
-    _amountCompleted = amount;
-}
+    {
+        _amountCompleted = amount;
+    }
+
+    public void BonusAction()
+    {
+        string bonusAction = $"*** YOU GOT A BONUS {GetBonus()} POINTS ***";
+        foreach (char character in bonusAction)
+        {
+            Console.Write(character);
+            Thread.Sleep(100);
+        }
+    }
+
+
 }
