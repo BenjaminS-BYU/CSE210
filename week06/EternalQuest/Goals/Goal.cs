@@ -21,4 +21,5 @@ public abstract class Goal
     public abstract string GetStringRepresentation();
 
     public int GetPoints() => _points;
+    public string GetName() => _shortName;
 }

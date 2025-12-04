@@ -12,16 +12,18 @@ class Program
         while(running)
         {
             Console.Clear();
-            Console.Write(@$"Score: {manager.GetScore()}
+            Console.Write(@$"Welcome to the Goal Tracking Game!
+Your Score: {manager.GetScore()}
 
 1. Create Goal
 2. List Goals
 3. Record Event
 4. Save
 5. Load
-6. Quit
+6. Point History
+7. Quit
 
-Choose: ");
+Which do you choose?: ");
             string input = Console.ReadLine();
 
             switch (input)
@@ -48,8 +50,13 @@ Choose: ");
                     break;
 
                 case "6":
+                    manager.ShowPointHistory();
+                    break;
+
+                case "7":
                     running = false;
                     break;
+
             }
         }
     }

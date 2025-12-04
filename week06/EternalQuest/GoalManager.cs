@@ -4,6 +4,8 @@ public class GoalManager
 {
     private List<Goal> _goals = [];
     private int _score = 0;
+    private List<string> _pointHistory = new List<string>();
+
 
     public GoalManager()
     {
@@ -81,9 +83,24 @@ Choose: ");
         ListGoalNames();
         Console.Write("Which goal did you accomplish? ");
 
-        int index = int.Parse(Console.ReadLine()) - 1;
+        string input = Console.ReadLine();
 
-        if (index < 0 || index >= _goals.Count) return;
+        if (!int.TryParse(input, out int index))
+        {
+            Console.WriteLine("Invalid input. Please enter a number.");
+            Console.ReadKey();
+            return;
+        }
+
+        index -= 1; // Start at 0 again
+
+        if (index < 0 || index >= _goals.Count)
+        {
+            Console.WriteLine("Invalid goal number.");
+            Console.ReadKey();
+            return;
+        }
+
 
         Goal g = _goals[index];
 
@@ -92,10 +109,14 @@ Choose: ");
         g.RecordEvent();
 
         _score += g.GetPoints();
+        _pointHistory.Add($"{DateTime.Now} - Earned {g.GetPoints()} points from \"{g.GetName()}\"");
 
         if (!alreadyComplete && g.IsComplete() && g is ChecklistGoal ck)
         {
-            _score += ck.GetBonus();
+            int pts = g.GetPoints();
+            _score += pts;
+            _pointHistory.Add($"{DateTime.Now} - Earned {pts} points from \"{g.GetName()}\"");
+
         }
 
         Console.WriteLine("Event Recorded.");
@@ -112,6 +133,11 @@ Choose: ");
 
         foreach (Goal g in _goals)
             sw.WriteLine(g.GetStringRepresentation());
+        
+        sw.WriteLine("#HISTORY#");
+        foreach (var h in _pointHistory)
+            sw.WriteLine(h);
+
 
         Console.WriteLine("Press enter to save.");
         Console.ReadKey();
@@ -126,8 +152,14 @@ Choose: ");
 
         _score = int.Parse(lines[0]);
         _goals.Clear();
+        _pointHistory.Clear();
 
-        for (int i = 1; i < lines.Length; i++)
+        int historyStart = Array.IndexOf(lines, "#HISTORY#");
+
+        int goalEnd = historyStart == -1 ? lines.Length : historyStart;
+
+        // Load goals
+        for (int i = 1; i < goalEnd; i++)
         {
             string[] p = lines[i].Split("|");
 
@@ -149,7 +181,33 @@ Choose: ");
             }
         }
 
-        Console.WriteLine("Loaded.");
+            // Load history
+            if (historyStart != -1)
+            {
+                for (int i = historyStart + 1; i < lines.Length; i++)
+                    _pointHistory.Add(lines[i]);
+            }
+
+            Console.WriteLine("Loaded.");
+            Console.ReadKey();
+    }
+
+
+        public void ShowPointHistory()
+    {
+        if (_pointHistory.Count == 0)
+        {
+            Console.WriteLine("No points earned yet.");
+            Console.ReadKey();
+            return;
+        }
+
+        Console.WriteLine("\nPoints Earned History:\n");
+
+        foreach (string entry in _pointHistory)
+            Console.WriteLine(entry);
+
+        Console.WriteLine("\nPress any key to continue...");
         Console.ReadKey();
     }
 }
