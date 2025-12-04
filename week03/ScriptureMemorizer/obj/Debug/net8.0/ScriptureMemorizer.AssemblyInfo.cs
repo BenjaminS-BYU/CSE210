@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScriptureMemorizer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3dcba34a64ddea57daee938cb6d865b2bfc971e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a518de6df8bb747e62d056b25c4de59ada33345")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScriptureMemorizer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScriptureMemorizer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

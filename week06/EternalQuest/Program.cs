@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 class Program
 {
@@ -24,34 +26,31 @@ Choose: ");
 
             switch (input)
             {
-                case "6":
-                Console.WriteLine("Thank you for using the goal tracker program. Goodbye.");
-                running = false;
-                break;
-
                 case "1":
-                    
+                    manager.CreateGoal();
                     break;
 
                 case "2":
-                    manager.DisplayGoals();
+                    manager.ListGoalDetails();
                     Console.ReadKey();
                     break;
 
                 case "3":
-                    
+                    manager.RecordEvent();
                     break;
 
                 case "4":
-                    
+                    manager.SaveGoals();
                     break;
 
                 case "5":
-                    
+                    manager.LoadGoals();
+                    break;
+
+                case "6":
+                    running = false;
                     break;
             }
-
-
         }
     }
 }

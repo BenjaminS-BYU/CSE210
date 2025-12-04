@@ -1,21 +1,22 @@
 public class EternalGoal : Goal
 {
     public EternalGoal(string name, string description, int points)
-    : base(name, description, points)
-    { }
-
-    public override int RecordEvent()
+        : base(name, description, points)
     {
-        return GetPoints();
     }
 
-    public override string GetStatusSymbol()
+    public override void RecordEvent()
     {
-        return " ";
+        
+    }
+
+    public override bool IsComplete()
+    {
+        return false; 
     }
 
     public override string GetStringRepresentation()
     {
-        return $"EternalGoal:{GetName()},{GetDescription()},{GetPoints()}";
+        return $"EternalGoal|{_shortName}|{_description}|{_points}";
     }
 }
