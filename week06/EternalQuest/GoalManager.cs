@@ -29,20 +29,23 @@ public class GoalManager
     public void CreateGoal()
     {
         Console.Clear();
-        Console.WriteLine("1. Simple Goal");
-        Console.WriteLine("2. Eternal Goal");
-        Console.WriteLine("3. Checklist Goal");
-        Console.Write("Choose: ");
+        Console.Write(@$"What Goal is this?
+
+1. Simple Goal
+2. Eternal Goal
+3. Checklist Goal
+
+Choose: ");
 
         string type = Console.ReadLine();
 
-        Console.Write("Name: ");
+        Console.Write("Name of the goal: ");
         string name = Console.ReadLine();
 
-        Console.Write("Description: ");
+        Console.Write("Short description of the goal: ");
         string desc = Console.ReadLine();
 
-        Console.Write("Points: ");
+        Console.Write("How many points is this goal worth?: ");
         int points = int.Parse(Console.ReadLine());
 
         switch (type)
@@ -56,9 +59,9 @@ public class GoalManager
                 break;
 
             case "3":
-                Console.Write("Target: ");
+                Console.Write("How many times do you want to achieve this goal?: ");
                 int target = int.Parse(Console.ReadLine());
-                Console.Write("Bonus: ");
+                Console.Write("What is the bonus for achieving the target amount?: ");
                 int bonus = int.Parse(Console.ReadLine());
 
                 _goals.Add(new ChecklistGoal(name, desc, points, target, bonus));
@@ -110,7 +113,7 @@ public class GoalManager
         foreach (Goal g in _goals)
             sw.WriteLine(g.GetStringRepresentation());
 
-        Console.WriteLine("Saved.");
+        Console.WriteLine("Press enter to save.");
         Console.ReadKey();
     }
 
