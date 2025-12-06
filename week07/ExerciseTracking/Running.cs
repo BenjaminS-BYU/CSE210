@@ -1,24 +1,22 @@
 public class Running : Activity
 {
-    private double _distance;
+    private double _distance; // km
+
+    public Running(DateTime date, int minutes, double distanceKm)
+        : base(date, minutes)
+    {
+        _distance = distanceKm;
+    }
+
+    public override double GetDistance() => _distance;
+
+    public override double GetSpeed()
+    {
+        return _distance / GetMinutes() * 60;
+    }
 
     public override double GetPace()
     {
-        return (double)GetMinutes() / _distance;
-    }
-
-    public override double GetDistance()
-    {
-        return _distance;
-    }
-
-    public void SetDistance(double distance)
-    {
-        _distance = distance;
-    }
-
-    public void NewRun(int minutes, double distance)
-    {
-        Console.WriteLine(GetSummary());
+        return GetMinutes() / _distance;
     }
 }
